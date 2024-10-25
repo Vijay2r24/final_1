@@ -5,6 +5,7 @@ import { DataContext } from "../../Context/DataContext";
 import Datepicker from "react-tailwindcss-datepicker";
 import axios from "axios";
 import LoadingAnimation from "../../components/Loading/LoadingAnimation";
+import {getAllFeedbacksAPI}from "../../Constants/apiRoutes";
 
 const FeedbackComponent = () => {
   const [feedbacks, setFeedbacks] = useState([]); // Feedback data
@@ -39,7 +40,7 @@ const FeedbackComponent = () => {
 
         // Perform API call using axios
         const response = await axios.get(
-          `https://imly-b2y.onrender.com/api/Feedback/GetAllFeedBacks`,
+          getAllFeedbacksAPI,
           {
             params: {
               StartDate: startDate,

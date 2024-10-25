@@ -31,6 +31,7 @@ import {
   GET_ALL_ORDERS,
   GETALLSTORES_API,
   GETORDERBYID_API,
+  UPDATESUBORDERSTATUSAPI,
 } from "../../Constants/apiRoutes";
 import {
   Dialog,
@@ -271,7 +272,7 @@ export default function Orders() {
     try {
       // Call API to update sub-order status
       const response = await axios.post(
-        "https://imly-b2y.onrender.com/api/orders/updateSubOrderStatus",
+        UPDATESUBORDERSTATUSAPI,
         {
           OrderID: details.OrderID,
           SubStatusId: details.SubStatusId,

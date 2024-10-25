@@ -75,4 +75,6 @@ export const GET_TASKS = `${BASE_URL}/orderhistory/getusertasks`;
 export const GET_SALES_AND_PAYMENT_REPORT_BY_MONTH = `${BASE_URL}/Dashboard/getSalesAndPaymentReportByMonth
 `;
 export const GET_OVERALL_DATA_FOR_DASHBOARD = `${BASE_URL}/Dashboard/getOverAllDataForDashboard`;
-
+export const  UPDATESUBORDERSTATUSAPI  = `${BASE_URL}/orders/updateSubOrderStatus`;
+export const getAllFeedbacksAPI=`${BASE_URL}/Feedback/GetAllFeedBacks`;
+export const getOrderByIdAPI=`${BASE_URL}/orders/createOrderOrUpdate`;

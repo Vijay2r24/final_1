@@ -43,14 +43,17 @@ import AmazonPayIcon from "../../assests/Images/Payments/amazon-pay.svg";
 import LoadingAnimation from "../Loading/LoadingAnimation";
 
 const Payment = ({ orderId }) => {
-  const { generatedId, customerId, orderDate } = useContext(IdContext);
+  const { generatedId, orderDate } = useContext(IdContext);
   const [orderDetails, setOrderDetails] = useState({
     PaymentMethod: "",
     MaskedCardNumber: "",
     PaymentComments: "",
     Amount: "",
   });
-
+  const {
+    customerId,
+    setCustomerId,
+  } = useContext(IdContext);
   const [errors, setErrors] = useState({});
   const [orders1, setOrders1] = useState([]);
   const [page, setPage] = useState(0);
@@ -91,13 +94,12 @@ const Payment = ({ orderId }) => {
       });
       return; // Exit function if validation fails
     }
-
     // Payment data object
     const paymentData = {
       TenantID: 1,
       PaymentID: 0,
       OrderID: orderId,
-      CustomerID: 33,
+      CustomerID: customerId,
       Amount: orderDetails.Amount,
       PaymentComments: orderDetails.PaymentComments,
       PaymentMethod: orderDetails.PaymentMethod,

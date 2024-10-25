@@ -26,6 +26,7 @@ import {
   GET_ALL_HYSTORYID_API,
   GETALLUSERS_API,
   GETALLROLESS_API,
+  ORDER_STATUS_API,
   ORDERBYCUSTOMERID_API,
 } from "../../Constants/apiRoutes";
 import LoadingAnimation from "../Loading/LoadingAnimation";
@@ -97,6 +98,7 @@ const YourComponent = ({ onBack, onNext, orderId }) => {
     setDesginerID,
     statusID,
     setStatusID,
+    setcCustomerId,
     setRoleID,
     roleID,
   } = useContext(IdContext);
@@ -124,9 +126,7 @@ const YourComponent = ({ onBack, onNext, orderId }) => {
   useEffect(() => {
     const fetchOrderStatuses = async () => {
       try {
-        const response = await fetch(
-          "https://imly-b2y.onrender.com/api/Orderstatus/getAllOrderStatus"
-        );
+        const response = await fetch(ORDER_STATUS_API);
         const data = await response.json();
 
         // Log the data to see its structure
@@ -315,7 +315,7 @@ const YourComponent = ({ onBack, onNext, orderId }) => {
 
       const updatedCustomer = await fetchOrderDetails(OrderID);
 
-      fetch(`https://imly-b2y.onrender.com/api/orders/getOrderById/${OrderID}`)
+      fetch(`https://imly-b2y-ttnc.onrender.com/api/orders/getOrderById/${OrderID}`)
         .then((response) => response.json())
         .then((data) => {
           if (data?.order) {

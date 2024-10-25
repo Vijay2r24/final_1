@@ -14,7 +14,9 @@ import {
   GETALLUSERS_API,
   GETALLCUSTOMERS_API,
   GETALLSTORES_API,
+  GETORDERBYID_API,
   ORDERBYCUSTOMERID_API,
+  getOrderByIdAPI,
 } from "../../Constants/apiRoutes";
 import { IoIosSearch, IoMdAddCircleOutline } from "react-icons/io";
 import { ToastContainer, toast } from "react-toastify";
@@ -151,6 +153,8 @@ function AddOrders() {
     setDesginerID,
     statusID,
     setStatusID,
+    customerId,
+    setCustomerId,
     roleID,
     setRoleID,
   } = useContext(IdContext);
@@ -159,7 +163,7 @@ function AddOrders() {
   const handleTabChange = (tab) => setSelectedTab(tab);
   const [addressData, setAddressData] = useState([]);
   const { updatedStatusOrderDetails } = useUpdatedStatusOrderContext();
-  const { orderId } = useParams(); // Get orderId from URL
+  const { orderId} = useParams(); // Get orderId from URL
 
   // console.log(updatedStatusOrderDetails,"uSOD")
 
@@ -226,7 +230,7 @@ function AddOrders() {
 
         // Fetch order details based on the orderId
         const response = await axios.get(
-          `https://imly-b2y.onrender.com/api/orders/getOrderById/${orderIdToFetch}`
+          `${GETORDERBYID_API}/${orderIdToFetch}`
         );
 
         const fetchedOrderData = response.data.order;
@@ -666,7 +670,7 @@ function AddOrders() {
     try {
       setIsLoading(true);
       const response = await axios.post(
-        "https://imly-b2y.onrender.com/api/orders/createOrderOrUpdate",
+        getOrderByIdAPI,
         data,
         {
           headers: {
@@ -684,7 +688,7 @@ function AddOrders() {
       if (generatedId) {
         setIsLoading(true);
         fetch(
-          `https://imly-b2y.onrender.com/api/orders/getOrderById/${generatedId}`
+          `${getOrderByIdAPI}/${generatedId}`
         )
           .then((response) => {
             if (!response.ok) {
@@ -964,6 +968,7 @@ function AddOrders() {
       setDesignerName(order?.DesginerName || "");
       setDesginerID(order?.DesginerID || "");
       setRoleID(order?.RoleID || "");
+      setCustomerId(order.CustomerID || "")
       console.log("roleidvijay", roleID);
       // Fetch location data based on the country, state, and city
 
