@@ -688,7 +688,7 @@ function AddOrders() {
       if (generatedId) {
         setIsLoading(true);
         fetch(
-          `${getOrderByIdAPI}/${generatedId}`
+          `${GETORDERBYID_API}/${generatedId}`
         )
           .then((response) => {
             if (!response.ok) {
@@ -1298,7 +1298,7 @@ function AddOrders() {
                                   />
                                 </span>
 
-                                {( statusUpdatedData === "Revised Design" || updatedsubStatusId === "Revised Design") &&
+                                {( statusUpdatedData === "Revised Design" ||  statusUpdatedData === "Production") &&
                                   updatedsubStatusId !== 0 &&
                                   updatedsubStatusId !== "N/A" && (
                                     <div className="w-1/3 ml-2">

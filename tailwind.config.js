@@ -16,6 +16,14 @@ module.exports = {
   theme: {
     extend: {
       colors:{
+        'custom-blue1': '#00ACC1',
+        'custom-pink':'#DA70D6',
+        'custom-indigo':'#7986CB',
+        'custom-LavenderBlush':'#E6B7D2',
+        'custom-Apricot':'#D35400',
+        'custom-Apricot':'#D35400',
+        'custom-Brown':'#3EB489',
+         
         "custom-yellow":'#f9eb28',
         'custom-red': '#F24F4B',
         'custom-heading':"#667649",

@@ -210,13 +210,13 @@ const FilterBar = ({ selectedFilter, onFilterChange }) => {
         {/* Other filter options in More */}
         <MenuItem
           onClick={() => {
-            onFilterChange("Initial Measurement");
+            onFilterChange("Initial Measurements");
             handleMenuClose();
           }}
           style={buttonStylesInside}
         >
           <StraightenIcon sx={{ mr: 1 }} />
-          Initial Measurement
+          Initial Measurements
         </MenuItem>
         <MenuItem
           onClick={() => {
@@ -244,7 +244,7 @@ const FilterBar = ({ selectedFilter, onFilterChange }) => {
         >
           <MenuItem
             onClick={() => {
-              onFilterChange("Initial Measurement");
+              onFilterChange("Initial Measurements");
               handleMenuClose();
             }}
             style={{
@@ -261,7 +261,7 @@ const FilterBar = ({ selectedFilter, onFilterChange }) => {
             }}
           >
             <StraightenIcon sx={{ mr: 1 }} />
-            Initial Measurement
+            Initial Measurements
           </MenuItem>
           <MenuItem
             onClick={() => {

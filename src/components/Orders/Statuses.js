@@ -84,28 +84,28 @@ const StatusBadge = ({ status }) => {
       : status === "Pending"
   ? "bg-yellow-500 text-white ring-yellow-500/30" // Yellow background and white text for Pending
       : status === "Quick Quote"
-  ? "bg-teal-500 text-white ring-teal-500/30" // Teal background and white text for Quick Quote
+  ? " bg-custom-blue1 text-white ring-teal-500/30" // Teal background and white text for Quick Quote
       : status === "Processing"
   ? "bg-orange-500 text-white ring-orange-500/30" // Orange background and white text for Processing
       : status === "Initial Design"
-  ? "bg-indigo-500 text-white ring-indigo-500/30" // Indigo background and white text for Initial Design
-      : status === "Initial Measurement"
-  ? "bg-indigo-500 text-white ring-indigo-500/30" // Indigo background and white text for Initial Measurement
+  ? "bg-custom-pink text-white ring-indigo-500/30" // Indigo background and white text for Initial Design
+      : status === "Initial Measurements"
+  ? "bg-custom-LavenderBlush text-white ring-custom-LavenderBlush" // Indigo background and white text for Initial Measurement
       : status.startsWith("Revised Design")
-  ? "bg-purple-500 text-white ring-purple-500/30" // Purple background and white text for Revised Design
+  ? "bg-custom-indigo text-white ring-purple-500/30" // Purple background and white text for Revised Design
       : status === "Final Measurement"
-  ? "bg-gray-500 text-white ring-gray-500/30" // Gray background and white text for Final Measurement
+  ? "bg-custom-Brown text-white ring-gray-500/30" // Gray background and white text for Final Measurement
       : status === "SignUp Document"
   ? "bg-gray-500 text-white ring-gray-500/30" // Gray background and white text for SignUp Document
       : status === "Production"
-  ? "bg-gray-500 text-white ring-gray-500/30" // Gray background and white text for Production
+  ? "bg-custom-Apricot text-white ring-gray-500/30" // Gray background and white text for Production
       : status === "PDI"
   ? "bg-pink-500 text-white ring-pink-500/30" // Pink background and white text for PDI
       : status === "Dispatch"
   ? "bg-teal-500 text-white ring-teal-500/30" // Teal background and white text for Dispatch
       : status === "Installation"
   ? "bg-cyan-500 text-white ring-cyan-500/30" // Cyan background and white text for Installation
-      : status === "Completed"
+      : status === "Completion"
   ? "bg-green-500 text-white ring-green-500/30" // Green background and white text for Completed
       : status === "Cancelled"
   ? "bg-red-500 text-white ring-red-500/30" // Red background and white text for Cancelled

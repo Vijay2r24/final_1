@@ -315,7 +315,7 @@ const YourComponent = ({ onBack, onNext, orderId }) => {
 
       const updatedCustomer = await fetchOrderDetails(OrderID);
 
-      fetch(`https://imly-b2y-ttnc.onrender.com/api/orders/getOrderById/${OrderID}`)
+      fetch(`${GETORDERBYID_API}/${OrderID}`)
         .then((response) => response.json())
         .then((data) => {
           if (data?.order) {
@@ -340,6 +340,7 @@ const YourComponent = ({ onBack, onNext, orderId }) => {
       setImagePreviews([]);
       setImages([]);
       setPdfPreviews([]);
+      setDocPreviews([]);
       setFormOrderDetails({
         ...formOrderDetails, // Preserve other fields
         DeliveryDate: "", // Clear Delivery Date
@@ -794,6 +795,31 @@ const YourComponent = ({ onBack, onNext, orderId }) => {
         RoleName: statusData.RoleName || "",
       });
       // Set the search user value for the input field
+      console.log("DownloadDocuments", statusData.viewdocuments || [])
+      //  setPdfPreviews(statusData.viewdocuments || []);
+      const viewDocumentsArray = Array.isArray(statusData.viewdocuments) ? statusData.viewdocuments : [];
+      if (viewDocumentsArray.length > 0) {
+        // Filter URLs based on file extension, accounting for suffixes after the extension
+        const imageFiles = statusData.viewdocuments.filter(url =>
+          /\.(jpg|jpeg|png|gif)(_[^.]*)?$/.test(url)
+        );
+        const pdfFiles = statusData.viewdocuments.filter(url =>
+          /\.pdf(_[^.]*)?$/.test(url)
+        );
+        const docFiles = statusData.viewdocuments.filter(url =>
+          /\.(doc|docx|txt|xls|xlsx)(_[^.]*)?$/.test(url) ||
+          url.includes("application/msword") ||
+          url.includes("application/vnd.openxmlformats-officedocument.wordprocessingml.document") ||
+          url.includes("text/plain") ||
+          url.includes("application/vnd.ms-excel") ||
+          url.includes("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+        );
+
+        // Set preview states
+        setImagePreviews(imageFiles);
+        setPdfPreviews(pdfFiles);
+        setDocPreviews(docFiles);
+      }
       setSearchUserValue(statusData.AssignTo || "");
       // Set the selected role for the combobox
       setSelectedRole(statusData.UserRoleID || "");
@@ -831,10 +857,12 @@ const YourComponent = ({ onBack, onNext, orderId }) => {
     }
   };
   const handleCancel2 = () => {
-    setSelectedRole("");
     setSelectedStatus("");
-    setImagePreviews("");
-    setImages("");
+   setImagePreviews([]);
+      setImages([]);
+      setPdfPreviews([]);
+      setDocPreviews([]);
+      setEditMode(false);
     setFormOrderDetails({
       ...formOrderDetails, // Preserve other fields
       DeliveryDate: "", // Clear Delivery Date
